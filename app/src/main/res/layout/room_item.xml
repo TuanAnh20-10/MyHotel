@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="6dp"
+    android:layout_width="160dp"
+    android:background="@drawable/room_item_border"
+    android:layout_height="182dp">
+    <ImageView
+        android:id="@+id/imageRoom"
+        android:layout_width="152dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="4dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="Image room"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/room" />
+
+    <TextView
+        android:id="@+id/saleTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/search_border"
+        android:backgroundTint="#e0effd"
+        android:padding="5dp"
+        android:text="10% OFF"
+        android:textColor="#007EF2"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/imageRoom"
+        app:layout_constraintTop_toBottomOf="@+id/imageRoom" />
+    <TextView
+        android:id="@+id/ratingTV"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/search_border"
+        android:backgroundTint="#e0effd"
+        android:padding="5dp"
+        android:text="Rating:5"
+        android:textColor="#007EF2"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageRoom"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/saleTV"
+        app:layout_constraintTop_toBottomOf="@+id/imageRoom" />
+
+    <TextView
+        android:id="@+id/nameRoomTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="Luxury Room"
+        android:textColor="#303030"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageRoom"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/saleTV"
+        app:layout_constraintTop_toBottomOf="@+id/saleTV" />
+    <TextView
+        android:id="@+id/priceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="100$ / night"
+        android:textColor="#007EF2"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageRoom"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/imageRoom"
+        app:layout_constraintTop_toBottomOf="@+id/nameRoomTV" />
+</androidx.constraintlayout.widget.ConstraintLayout>
