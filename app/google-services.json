@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "143541568031",
+    "firebase_url": "https://xcnmhotelbookingapp-default-rtdb.firebaseio.com",
+    "project_id": "xcnmhotelbookingapp",
+    "storage_bucket": "xcnmhotelbookingapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143541568031:android:ee4a8d60a774e3b6414b2a",
+        "android_client_info": {
+          "package_name": "com.xinchaongaymoi.hotelbookingapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143541568031-i22gnea4naau05unn3hapo467n2usuq7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xinchaongaymoi.hotelbookingapp",
+            "certificate_hash": "ec3f759980d7eefa12ea2d21ae050776973e266c"
+          }
+        },
+        {
+          "client_id": "143541568031-6kgbblbc34gmtvnuuekpkbcq4ht8vn6b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMOPeMUv8wi6-mhCOlJe14lciabjBR2ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143541568031-6kgbblbc34gmtvnuuekpkbcq4ht8vn6b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

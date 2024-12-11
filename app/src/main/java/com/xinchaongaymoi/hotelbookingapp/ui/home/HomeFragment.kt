@@ -32,6 +32,7 @@ private var _binding: FragmentHomeBinding? = null
 
     }
     return root
+
   }
 
 override fun onDestroyView() {
