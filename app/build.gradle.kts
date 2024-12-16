@@ -71,6 +71,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.activity)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -86,6 +87,7 @@ dependencies {
     // https://firebase.google.com/docs/android/setup#available-libraries
     implementation("com.firebaseui:firebase-ui-auth:8.0.2")
     implementation("com.facebook.android:facebook-android-sdk:17.0.2")
+    implementation ("com.google.android.gms:play-services-auth")
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)

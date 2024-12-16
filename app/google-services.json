@@ -8,6 +8,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:143541568031:android:b8f5a721e7c57504414b2a",
+        "android_client_info": {
+          "package_name": "com.tlavu.roomdetails"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143541568031-6kgbblbc34gmtvnuuekpkbcq4ht8vn6b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMOPeMUv8wi6-mhCOlJe14lciabjBR2ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143541568031-6kgbblbc34gmtvnuuekpkbcq4ht8vn6b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:143541568031:android:ee4a8d60a774e3b6414b2a",
         "android_client_info": {
           "package_name": "com.xinchaongaymoi.hotelbookingapp"
@@ -15,11 +44,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "143541568031-i22gnea4naau05unn3hapo467n2usuq7.apps.googleusercontent.com",
+          "client_id": "143541568031-dl1dg67g5jplg3j8e3kenj15hqo5h8sk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.xinchaongaymoi.hotelbookingapp",
-            "certificate_hash": "ec3f759980d7eefa12ea2d21ae050776973e266c"
+            "certificate_hash": "d70ceab352984e234c35a3ea55625cda61ceb55b"
           }
         },
         {
