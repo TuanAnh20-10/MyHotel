@@ -23,6 +23,7 @@ class RoomService {
                             ignoreCase = true
                         ) || it.ultilities.contains(keyWord, ignoreCase = true)
                     }.toMutableList()
+
                     callback(roomList)
                 }
 
@@ -30,6 +31,7 @@ class RoomService {
                     TODO("Not yet implemented")
                 }
             })
+
     }
 
     fun getRoomByType(keyWord: String, callback: (MutableList<Room>) -> Unit) {
@@ -50,5 +52,6 @@ class RoomService {
                     TODO("Not yet implemented")
                 }
             })
+
     }
 }

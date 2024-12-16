@@ -15,4 +15,5 @@ data class Room(
     val ultilities: String="",
     val sale:Int=0,
     val rating:Double=0.0
+
 )

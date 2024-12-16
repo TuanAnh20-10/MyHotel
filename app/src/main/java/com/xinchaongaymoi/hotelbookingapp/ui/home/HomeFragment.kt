@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.xinchaongaymoi.hotelbookingapp.SearchActivity
 import com.xinchaongaymoi.hotelbookingapp.data.adapter.HomeRoomAdapter
 import com.xinchaongaymoi.hotelbookingapp.data.service.RoomService
+
 import com.xinchaongaymoi.hotelbookingapp.databinding.FragmentHomeBinding
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -45,12 +46,14 @@ private var _binding: FragmentHomeBinding? = null
           intent.putExtra("keyWord",searchET.text.toString())
           startActivity(intent)
       }
+
       royalRoomRecyclerView= binding.recommendRV
       luxuryRoomRecyclerView =binding.bestRV
       royalRoomRecyclerView.layoutManager = LinearLayoutManager(requireContext())
       luxuryRoomRecyclerView.layoutManager=LinearLayoutManager(requireContext())
       getRooms()
     val root: View = binding.root
+
     homeViewModel.text.observe(viewLifecycleOwner) {
 
     }
