@@ -88,6 +88,9 @@ dependencies {
     implementation("com.firebaseui:firebase-ui-auth:8.0.2")
     implementation("com.facebook.android:facebook-android-sdk:17.0.2")
     implementation ("com.google.android.gms:play-services-auth")
+    implementation("com.google.firebase:firebase-database-ktx")
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
