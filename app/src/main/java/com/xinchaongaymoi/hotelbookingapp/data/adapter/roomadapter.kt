@@ -29,7 +29,9 @@ class RoomAdapter(private val roomList: MutableList<Room>) :
         val room = roomList[position]
         holder.roomName.text = room.room_name
         holder.roomPrice.text = "Price per night: ${room.price_per_night}$"
-        holder.roomType.text = room.room_type
+
+        holder.roomType.text ="Type: ${room.room_type}"
+
 
         // Load image using Glide
         Glide.with(holder.itemView.context)

@@ -13,5 +13,7 @@ data class Room(
     val price_per_night:Int=0,
     val price_per_hour:Int=0,
     val ultilities: String="",
-    val sale:Int=0
+    val sale:Int=0,
+    val rating:Double=0.0
+
 )

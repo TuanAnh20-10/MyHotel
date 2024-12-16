@@ -30,7 +30,9 @@ class SearchActivity : AppCompatActivity() {
 
     }
     private fun searchRoomByUltilities(keyWord:String){
+
         Log.i("keyyyyyyy",keyWord)
+
         roomService.searchRoomByUltilities(keyWord,
             callback = {
                 roomList->roomAdapter=RoomAdapter(roomList)
