@@ -9,7 +9,7 @@
         android:id="@+id/searchHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Search Rooms"
+        android:text="@string/search_rooms_text"
         android:textSize="18sp"
         android:paddingBottom="8dp"/>
 
