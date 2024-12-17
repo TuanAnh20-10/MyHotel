@@ -7,7 +7,7 @@ import com.google.firebase.database.ValueEventListener
 import com.xinchaongaymoi.hotelbookingapp.data.model.Room
 import android.util.Log
 class RoomService {
-    fun searchRoomByUltilities(keyWord: String, callback: (MutableList<Room>) -> Unit) {
+    fun searchRoomByUtilities(keyWord: String, callback: (MutableList<Room>) -> Unit) {
         val database = FirebaseDatabase.getInstance().reference
         database.child("room")
             .addValueEventListener(object : ValueEventListener {
@@ -21,7 +21,7 @@ class RoomService {
                         it.room_name.contains(
                             keyWord,
                             ignoreCase = true
-                        ) || it.ultilities.contains(keyWord, ignoreCase = true)
+                        ) || it.utilities.contains(keyWord, ignoreCase = true)
                     }.toMutableList()
 
                     callback(roomList)

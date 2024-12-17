@@ -52,6 +52,14 @@
           }
         },
         {
+          "client_id": "143541568031-m1o9i9anpa3ln2b2h4qhv42gah8f4egq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xinchaongaymoi.hotelbookingapp",
+            "certificate_hash": "34357622759ff18940840fc30d8c205bbc52a8df"
+          }
+        },
+        {
           "client_id": "143541568031-6kgbblbc34gmtvnuuekpkbcq4ht8vn6b.apps.googleusercontent.com",
           "client_type": 3
         }

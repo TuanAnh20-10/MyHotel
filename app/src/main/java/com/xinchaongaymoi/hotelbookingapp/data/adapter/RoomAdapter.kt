@@ -1,16 +1,21 @@
 package com.xinchaongaymoi.hotelbookingapp.data.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.xinchaongaymoi.hotelbookingapp.R
-import com.xinchaongaymoi.hotelbookingapp.data.model.Room
 import com.bumptech.glide.Glide
-class RoomAdapter(private val roomList: MutableList<Room>) :
-    RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
+import com.xinchaongaymoi.hotelbookingapp.data.model.Room
+import com.xinchaongaymoi.hotelbookingapp.R
+import com.xinchaongaymoi.hotelbookingapp.RoomDetailActivity
+
+class RoomAdapter(
+    private val roomList: MutableList<Room>,
+    private val onItemClick: (String) -> Unit
+) : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
 
     class RoomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val roomImage: ImageView = itemView.findViewById(R.id.roomImageItem)
@@ -38,6 +43,14 @@ class RoomAdapter(private val roomList: MutableList<Room>) :
             .load(room.image)
             // Optional: placeholder image
             .into(holder.roomImage)
+
+        // Sự kiện click để chuyển sang RoomDetailActivity
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, RoomDetailActivity::class.java)
+            intent.putExtra("ROOM_ID", room.id) // Gửi roomId qua Intent
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int = roomList.size

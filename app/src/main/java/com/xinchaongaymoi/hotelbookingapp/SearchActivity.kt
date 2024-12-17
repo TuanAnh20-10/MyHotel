@@ -1,5 +1,6 @@
 package com.xinchaongaymoi.hotelbookingapp
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.xinchaongaymoi.hotelbookingapp.data.adapter.RoomAdapter
 import com.xinchaongaymoi.hotelbookingapp.data.service.RoomService
 import android.util.Log
+
 class SearchActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var roomAdapter:RoomAdapter
@@ -26,17 +28,30 @@ class SearchActivity : AppCompatActivity() {
         val keyWord = intent.getStringExtra("keyWord")?:""
         recyclerView = findViewById(R.id.roomRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        searchRoomByUltilities(keyWord)
-
+        searchRoomByUtilities(keyWord)
     }
-    private fun searchRoomByUltilities(keyWord:String){
 
-        Log.i("keyyyyyyy",keyWord)
+    private fun searchRoomByUtilities(keyWord: String) {
+        roomService.searchRoomByUtilities(keyWord) { roomList ->
+            if (roomList.isNotEmpty()) {
+                // Tạo adapter và gán danh sách phòng vào RecyclerView
+                roomAdapter = RoomAdapter(roomList) { roomId ->
+                    // Xử lý khi click vào một phòng, chuyển đến trang chi tiết
+                    navigateToRoomDetail(roomId)
+                }
+                recyclerView.adapter = roomAdapter
+            } else {
+                Log.w("SearchActivity", "No rooms found for keyword: $keyWord")
+            }
+        }
+    }
 
-        roomService.searchRoomByUltilities(keyWord,
-            callback = {
-                roomList->roomAdapter=RoomAdapter(roomList)
-                recyclerView.adapter=roomAdapter
-            })
+    /**
+     * Hàm điều hướng sang RoomDetailActivity
+     */
+    private fun navigateToRoomDetail(roomId: String) {
+        val intent = Intent(this, RoomDetailActivity::class.java)
+        intent.putExtra("ROOM_ID", roomId) // Truyền ID phòng sang RoomDetailActivity
+        startActivity(intent)
     }
 }

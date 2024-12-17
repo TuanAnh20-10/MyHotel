@@ -1,4 +1,5 @@
 package com.xinchaongaymoi.hotelbookingapp
+
 import android.os.Bundle
 import android.view.Menu
 import android.widget.Button
@@ -23,10 +24,15 @@ import com.google.firebase.auth.auth
 import com.xinchaongaymoi.hotelbookingapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
 
+
+//    private val signInLauncher = registerForActivityResult(
+//        FirebaseAuthUIActivityResultContract(),
+//    ) { res ->
+//        this.onSignInResult(res)
+//    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
