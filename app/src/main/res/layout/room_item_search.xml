@@ -13,7 +13,6 @@
         android:id="@+id/roomImageItem"
         android:layout_width="0dp"
         android:layout_height="250dp"
-        android:contentDescription="roomImage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +28,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="TextView"
         android:textSize="24sp"
         android:textStyle="bold"
 
@@ -49,7 +47,6 @@
 
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
-        android:text="TextView"
         android:textColor="#007EF2"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -68,7 +65,6 @@
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
         android:paddingBottom="10dp"
-        android:text="TextView"
         android:textColor="#007EF2"
         android:textSize="16sp"
         android:textStyle="bold"
