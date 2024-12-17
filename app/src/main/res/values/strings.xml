@@ -49,4 +49,8 @@
     <string name="_100_per_night_text">100$ / night</string>
     <string name="account_and_security_text">Account and security</string>
     <string name="settings_text">Settings</string>
+    <string name="item_title">Item Title</string>
+    <string name="string_account">\@string/account</string>
+    <string name="my_reviews">My reviews</string>
+    <string name="language">language</string>
 </resources>
