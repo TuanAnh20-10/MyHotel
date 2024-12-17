@@ -26,11 +26,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
+                android:padding="8dp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
                 android:text="@string/account_and_security_text" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/account_and_security_recycler_view"
                 android:layout_width="match_parent"
+                android:padding="8dp"
                 android:layout_height="match_parent" />
 
             <TextView
@@ -39,10 +43,14 @@
                 android:layout_height="wrap_content"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                android:textColor="@color/black"
+                android:padding="8dp"
                 android:text="@string/settings_text" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/settings_recycler_view"
                 android:layout_width="match_parent"
+                android:padding="8dp"
                 android:layout_height="match_parent" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

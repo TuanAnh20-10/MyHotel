@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class AccountViewModel : ViewModel() {
 
+
     private val _text = MutableLiveData<String>().apply {
         value = "This is slideshow Fragment"
     }
