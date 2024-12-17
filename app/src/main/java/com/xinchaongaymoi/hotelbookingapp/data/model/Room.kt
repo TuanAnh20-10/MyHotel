@@ -1,6 +1,7 @@
 package com.xinchaongaymoi.hotelbookingapp.data.model
 
 data class Room(
+    val id:String="",
     val room_name:String="",
     val image:String="",
     val room_type:String="",
@@ -15,5 +16,4 @@ data class Room(
     val utilities: String="",
     val sale:Int=0,
     val rating:Double=0.0
-
 )
