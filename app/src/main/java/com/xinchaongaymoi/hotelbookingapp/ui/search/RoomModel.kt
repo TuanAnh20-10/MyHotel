@@ -1,4 +1,4 @@
-package com.xinchaongaymoi.hotelbookingapp.ui.home
+package com.xinchaongaymoi.hotelbookingapp.ui.search
 
 
 data class Room(
