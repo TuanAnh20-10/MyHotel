@@ -1,4 +1,4 @@
-package com.xinchaongaymoi.hotelbookingapp.ui.search
+package com.xinchaongaymoi.hotelbookingapp.ui.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

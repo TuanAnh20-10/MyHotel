@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.xinchaongaymoi.hotelbookingapp.databinding.FragmentAccountBinding
-import com.xinchaongaymoi.hotelbookingapp.ui.search.AccountViewModel
+import com.xinchaongaymoi.hotelbookingapp.ui.home.AccountViewModel
 
 class AccountFragment : Fragment() {
 
