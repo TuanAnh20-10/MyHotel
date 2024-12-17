@@ -47,4 +47,6 @@
     <string name="rating_5_text">Rating: 5</string>
     <string name="luxury_room_text">Luxury Room</string>
     <string name="_100_per_night_text">100$ / night</string>
+    <string name="account_and_security_text">Account and security</string>
+    <string name="settings_text">Settings</string>
 </resources>
