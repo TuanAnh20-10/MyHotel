@@ -46,8 +46,8 @@ class HomeFragment : Fragment() {
 
         royalRoomRecyclerView= binding.recommendRV
         luxuryRoomRecyclerView =binding.bestRV
-        royalRoomRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        luxuryRoomRecyclerView.layoutManager=LinearLayoutManager(requireContext())
+        royalRoomRecyclerView.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+        luxuryRoomRecyclerView.layoutManager=LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
 
         getRooms()
 
@@ -73,6 +73,7 @@ class HomeFragment : Fragment() {
 
         roomService.getRoomByType("Luxury", callback = {
             roomList->luxuryAdapter=HomeRoomAdapter(roomList, onItemClick)
+            Log.i("tesstesxgb",roomList.toString())
             luxuryRoomRecyclerView.adapter=luxuryAdapter
         })
 
