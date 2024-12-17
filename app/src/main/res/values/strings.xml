@@ -44,7 +44,7 @@
     <string name="luxury_rooms_text">Luxury Rooms</string>
     <string name="image_room_text">Image room</string>
     <string name="_10_off_text">10% OFF</string>
-    <string name="rating_5_text">Rating:5</string>
+    <string name="rating_5_text">Rating: 5</string>
     <string name="luxury_room_text">Luxury Room</string>
     <string name="_100_per_night_text">100$ / night</string>
 </resources>
