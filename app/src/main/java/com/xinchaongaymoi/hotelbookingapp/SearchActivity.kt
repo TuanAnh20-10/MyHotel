@@ -26,14 +26,14 @@ class SearchActivity : AppCompatActivity() {
         val keyWord = intent.getStringExtra("keyWord")?:""
         recyclerView = findViewById(R.id.roomRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        searchRoomByUltilities(keyWord)
+        searchRoomByUtilities(keyWord)
 
     }
-    private fun searchRoomByUltilities(keyWord:String){
+    private fun searchRoomByUtilities(keyWord:String){
 
         Log.i("keyyyyyyy",keyWord)
 
-        roomService.searchRoomByUltilities(keyWord,
+        roomService.searchRoomByUtilities(keyWord,
             callback = {
                 roomList->roomAdapter=RoomAdapter(roomList)
                 recyclerView.adapter=roomAdapter
