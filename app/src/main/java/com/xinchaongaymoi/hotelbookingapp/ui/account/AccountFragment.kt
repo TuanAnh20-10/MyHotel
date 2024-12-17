@@ -23,15 +23,15 @@ private var _binding: FragmentAccountBinding? = null
     savedInstanceState: Bundle?
   ): View {
     val accountViewModel =
-            ViewModelProvider(this).get(AccountViewModel::class.java)
+        ViewModelProvider(this)[AccountViewModel::class.java]
 
     _binding = FragmentAccountBinding.inflate(inflater, container, false)
     val root: View = binding.root
-
-    val textView: TextView = binding.textSlideshow
-    accountViewModel.text.observe(viewLifecycleOwner) {
-      textView.text = it
-    }
+//
+//    val textView: TextView = binding.textSlideshow
+//    accountViewModel.text.observe(viewLifecycleOwner) {
+//      textView.text = it
+//    }
     return root
   }
 
