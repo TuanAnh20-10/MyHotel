@@ -47,4 +47,11 @@
     <string name="rating_5_text">Đánh giá: 5</string>
     <string name="luxury_room_text">Phòng Sang Trọng</string>
     <string name="_100_per_night_text">100$ / đêm</string>
+    <string name="account_and_security_text">Tài khoản và bảo mật</string>
+    <string name="settings_text">Cài đặt</string>
+    <string name="item_title">Tiêu đề mục</string>
+    <string name="string_account">Tài khoản</string>
+    <string name="my_reviews">Đánh giá của tôi</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="select_language">Chọn ngôn ngữ</string>
 </resources>

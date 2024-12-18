@@ -34,7 +34,7 @@ class AccountPageItemAdapter(
         holder.arrow.setImageResource(R.drawable.ic_arrow_right)
 
         // Handle item click
-//        holder.itemView.setOnClickListener { onItemClick(item) }
+        holder.itemView.setOnClickListener { item.onItemClick() }
     }
 
     override fun getItemCount(): Int = items.size
