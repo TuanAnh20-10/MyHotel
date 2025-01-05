@@ -16,14 +16,38 @@ class SearchViewModel : ViewModel() {
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
-    fun searchRooms(location: String, checkIn: String, checkOut: String, maxPrice: Double) {
+    private val _luxuryRooms = MutableLiveData<List<Room>>()
+    val luxuryRooms: LiveData<List<Room>> = _luxuryRooms
 
+    private val _royalRooms = MutableLiveData<List<Room>>()
+    val royalRooms: LiveData<List<Room>> = _royalRooms
+
+    fun searchRooms(location: String?, checkIn: String?, checkOut: String?, maxPrice: Double?) {
         _isLoading.value = true
         roomService.searchRooms(location, checkIn, checkOut, maxPrice) { rooms ->
-            Log.i("helloooo",rooms.toString())
             _searchResults.postValue(rooms)
             _isLoading.value = false
         }
+    }
 
+    fun loadRoomsByType() {
+        _isLoading.value = true
+        var loadedTypes = 0
+
+        roomService.getRoomsByType("Luxury") { rooms ->
+            _luxuryRooms.postValue(rooms)
+            loadedTypes++
+            if (loadedTypes == 2) {
+                _isLoading.postValue(false)
+            }
+        }
+
+        roomService.getRoomsByType("Royal") { rooms ->
+            _royalRooms.postValue(rooms)
+            loadedTypes++
+            if (loadedTypes == 2) {
+                _isLoading.postValue(false)
+            }
+        }
     }
 }
