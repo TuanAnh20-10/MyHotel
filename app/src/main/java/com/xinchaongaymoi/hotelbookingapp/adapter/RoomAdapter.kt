@@ -22,7 +22,10 @@ class RoomAdapter : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
             binding.apply {
                 roomName.text = room.roomName
                 roomLocation.text = room.location
-                roomPrice.text = "${room.pricePerNight} $"
+                roomPrice.text = "Price: ${room.pricePerNight} $"
+//                roomType.text = room.roomType
+                roomArea.text = "Diện tích: ${room.area} m2"
+                ratingBar.rating=room.rating.toFloat()
                 Glide.with(roomImage.context)
                     .load(room.mainImage)
                     .into(roomImage)

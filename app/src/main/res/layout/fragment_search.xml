@@ -78,7 +78,7 @@
                     <EditText
                         android:id="@+id/checkInDate"
                         android:layout_width="124dp"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:background="@null"
                         android:focusable="false"
                         android:hint="Check-in"
@@ -108,7 +108,7 @@
                     <EditText
                         android:id="@+id/checkOutDate"
                         android:layout_width="120dp"
-                        android:layout_height="60dp"
+                        android:layout_height="50dp"
                         android:background="@null"
                         android:focusable="false"
                         android:hint="Check-out"
@@ -156,7 +156,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Tìm kiếm"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:padding="12dp"
                 android:textSize="16sp"
                 android:textColor="#FFFFFF"

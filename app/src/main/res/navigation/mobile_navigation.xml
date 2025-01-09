@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/navigation_search_result"
-        android:name="com.xinchaongaymoi.hotelbookingapp.components.SearchResultFragment"
+        android:name="com.xinchaongaymoi.hotelbookingapp.components.search.SearchResultFragment"
         android:label="Search"
         tools:layout="@layout/fragment_search_result" />
 

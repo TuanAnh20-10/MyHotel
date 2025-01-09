@@ -21,6 +21,13 @@ class SearchViewModel : ViewModel() {
 
     private val _royalRooms = MutableLiveData<List<Room>>()
     val royalRooms: LiveData<List<Room>> = _royalRooms
+    enum class SortOrder
+    {
+        NONE,
+        PRICE_LOW_TO_HIGH,
+        PRICE_HIGH_TO_LOW,
+        RATING_HIGH_TO_LOW
+    }
 
     fun searchRooms(location: String?, checkIn: String?, checkOut: String?, maxPrice: Double?) {
         _isLoading.value = true
@@ -41,7 +48,6 @@ class SearchViewModel : ViewModel() {
                 _isLoading.postValue(false)
             }
         }
-
         roomService.getRoomsByType("Royal") { rooms ->
             _royalRooms.postValue(rooms)
             loadedTypes++
@@ -49,5 +55,15 @@ class SearchViewModel : ViewModel() {
                 _isLoading.postValue(false)
             }
         }
+    }
+    fun sortRooms(sortOrder: SortOrder){
+        val currentList = _searchResults.value?:return
+        val sortedList = when(sortOrder){
+            SortOrder.NONE->currentList
+            SortOrder.PRICE_LOW_TO_HIGH->currentList.sortedBy { it.pricePerNight }
+            SortOrder.PRICE_HIGH_TO_LOW->currentList.sortedByDescending { it.pricePerNight }
+            SortOrder.RATING_HIGH_TO_LOW->currentList.sortedByDescending{it.rating}
+        }
+        _searchResults.postValue(sortedList)
     }
 }
