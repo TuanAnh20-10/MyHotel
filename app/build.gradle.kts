@@ -4,7 +4,11 @@ plugins {
     // Add the Google services Gradle plugin
     id("com.google.gms.google-services")
 }
-
+buildscript {
+    dependencies {
+        classpath("com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1")
+    }
+}
 android {
     namespace = "com.xinchaongaymoi.hotelbookingapp"
     compileSdk = 35
@@ -32,11 +36,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures {
         viewBinding = true
@@ -50,6 +54,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
 
 dependencies {
@@ -93,7 +98,7 @@ dependencies {
     implementation ("com.cloudinary:cloudinary-android:2.1.0")
     implementation("com.github.bumptech.glide:glide:4.15.1")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
-
+    implementation("com.google.android.gms:play-services-maps:19.0.0")
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
