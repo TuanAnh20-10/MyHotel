@@ -16,5 +16,6 @@ class GoogleMapActivity : AppCompatActivity() {
             window,
             false
         )
+
     }
 }
