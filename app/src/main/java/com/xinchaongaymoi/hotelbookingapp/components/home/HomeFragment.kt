@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.xinchaongaymoi.hotelbookingapp.R
 import com.xinchaongaymoi.hotelbookingapp.activity.GalleryActivity
+import com.xinchaongaymoi.hotelbookingapp.activity.GoogleMapActivity
 
 import com.xinchaongaymoi.hotelbookingapp.databinding.FragmentHomeBinding
 
@@ -36,6 +38,11 @@ private var _binding: FragmentHomeBinding? = null
           val intent = Intent(requireContext(), GalleryActivity::class.java)
             startActivity(intent)
       }
+      val locationText=root.findViewById<ConstraintLayout>(R.id.locationText)
+        locationText.setOnClickListener {
+            val intent = Intent(requireContext(), GoogleMapActivity::class.java)
+            startActivity(intent)
+        }
     return root
   }
 
