@@ -1,15 +1,19 @@
 package com.xinchaongaymoi.hotelbookingapp.components
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.xinchaongaymoi.hotelbookingapp.R
 import com.xinchaongaymoi.hotelbookingapp.adapter.LanguageAdapter
+import java.util.Locale
 
 class LanguageBottomSheet : BottomSheetDialogFragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -19,12 +23,33 @@ class LanguageBottomSheet : BottomSheetDialogFragment() {
         val view = inflater.inflate(R.layout.language_bottom_sheet_content, container, false)
         return view
     }
-    //val languageRecyclerView = view.findViewById<RecyclerView>(R.id.language_recycler_view)
-    val languages = listOf("English", "French", "Vietnamese")
-    val languageAdapter = LanguageAdapter(languages) { language ->
-        // Handle language selected
-    }
     companion object {
         const val TAG = "ModalBottomSheet"
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val languages = listOf("English", "Vietnamese")
+        val languageAdapter = LanguageAdapter(languages)
+        { language ->
+            if (language == "English") setLocale("en")
+            else if (language == "Vietnamese")
+            setLocale("vi")
+        }
+        val languageRecyclerView = view.findViewById<RecyclerView>(R.id.language_recycler_view)
+        languageRecyclerView?.layoutManager = LinearLayoutManager(requireContext())
+        languageRecyclerView?.adapter = languageAdapter
+        view.viewTreeObserver.addOnGlobalLayoutListener {
+            val behavior = (dialog as? BottomSheetDialog)?.behavior
+            behavior?.peekHeight = view.height
+        }
+    }
+    private fun setLocale(language: String) {
+        val locale = Locale(language)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.locale = locale
+        resources.updateConfiguration(config, resources.displayMetrics)
+        requireActivity().recreate()
     }
 }

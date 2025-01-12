@@ -1,5 +1,6 @@
 package com.xinchaongaymoi.hotelbookingapp.components.account
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,10 +10,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.xinchaongaymoi.hotelbookingapp.R
+import com.xinchaongaymoi.hotelbookingapp.adapter.LanguageAdapter
 import com.xinchaongaymoi.hotelbookingapp.model.AccountPageItem
 import com.xinchaongaymoi.hotelbookingapp.databinding.FragmentAccountBinding
 import com.xinchaongaymoi.hotelbookingapp.components.LanguageBottomSheet
 import com.xinchaongaymoi.hotelbookingapp.components.home.AccountViewModel
+import java.util.Locale
 
 class AccountFragment : Fragment() {
 
@@ -48,10 +51,12 @@ private var _binding: FragmentAccountBinding? = null
       accountRecyclerView.layoutManager = LinearLayoutManager(this.context)
 
         val settingsItemList = listOf(
-            AccountPageItem(R.drawable.ic_language, getString(R.string.language)){
+            AccountPageItem(R.drawable.ic_language, getString(R.string.language))
+        {
                 // Show language bottom sheet
                 val languageBottomSheet = LanguageBottomSheet()
                 languageBottomSheet.show(parentFragmentManager, LanguageBottomSheet.TAG)
+
             }
         )
         val settingsAdapter = AccountPageItemAdapter(settingsItemList)
@@ -64,4 +69,5 @@ override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
 }
