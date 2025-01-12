@@ -21,7 +21,18 @@
         android:id="@+id/navigation_search"
         android:name="com.xinchaongaymoi.hotelbookingapp.components.search.SearchFragment"
         android:label="@string/menu_cart"
-        tools:layout="@layout/fragment_search"/>
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_searchFragment_to_searchResultFragment"
+            app:destination="@id/navigation_search_result" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_search_result"
+        android:name="com.xinchaongaymoi.hotelbookingapp.components.search.SearchResultFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search_result" />
+
     <fragment
         android:id="@+id/navigation_account"
         android:name="com.xinchaongaymoi.hotelbookingapp.components.account.AccountFragment"

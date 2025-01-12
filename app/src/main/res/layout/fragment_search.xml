@@ -1,148 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".components.search.SearchFragment">
+    android:layout_height="match_parent">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#F5F5F5">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <!-- Search Filters -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="16dp"
-            android:text="@string/welcome_authentication_text"
-            android:textColor="#007EF2"
-            android:textSize="34sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:orientation="vertical"
+            android:background="#FFFFFF"
+            android:padding="16dp"
+            android:elevation="4dp">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="#6ab4f7"
-            android:text="@string/checkin_date_btn"
-            app:cornerRadius="16dp"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="10dp"
-            android:text="@string/checkout_date_text"
-            app:cornerRadius="16dp"
-            android:backgroundTint="#6ab4f7"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/button"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-        <EditText
-            android:id="@+id/searchET"
-            android:layout_width="316dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="40dp"
-            android:ems="10"
-            android:inputType="text"
-            android:hint="@string/search_text"
-            android:textSize="20sp"
-            android:padding="10dp"
-            android:background="@drawable/search_border"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/button"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
-
-        <Button
-            android:id="@+id/searchBtn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/search_icon"
-            app:layout_constraintBottom_toBottomOf="@+id/searchET"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:contentDescription="@string/search_button_text"
-            app:layout_constraintHorizontal_bias="0.71"
-            app:layout_constraintStart_toEndOf="@+id/searchET"
-            app:layout_constraintTop_toTopOf="@+id/searchET" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="@string/royal_rooms_text"
-            android:textColor="#007EF2"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/searchET"
-            app:layout_constraintTop_toBottomOf="@+id/searchET" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recommendRV"
-                android:layout_width="0dp"
+            <!-- Location -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:padding="8dp"
-                android:scrollbars="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                android:layout_marginBottom="8dp"
+                android:background="#F8F8F8"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp">
 
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/luxury_rooms_text"
-            android:textColor="#007EF2"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/recommendRV"
-            app:layout_constraintTop_toBottomOf="@+id/recommendRV" />
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_location"
+                    app:tint="#6200EE" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/bestRV"
-                android:layout_width="0dp"
+                <EditText
+                    android:id="@+id/locationInput"
+                    android:layout_width="292dp"
+                    android:layout_height="50dp"
+                    android:background="@null"
+                    android:hint="Nhập địa điểm"
+                    android:textColor="#212121"
+                    android:textColorHint="#9E9E9E"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Date Range -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:padding="8dp"
-                android:scrollbars="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView8"
-                app:layout_constraintVertical_bias="0.0" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.core.widget.NestedScrollView>
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <!-- Check-in Date -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="#F8F8F8"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:layout_marginEnd="4dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_calendar"
+                        android:layout_marginEnd="8dp"
+                        app:tint="#6200EE"/>
+
+                    <EditText
+                        android:id="@+id/checkInDate"
+                        android:layout_width="124dp"
+                        android:layout_height="50dp"
+                        android:background="@null"
+                        android:focusable="false"
+                        android:hint="Check-in"
+                        android:textColor="#212121"
+                        android:textColorHint="#9E9E9E" />
+                </LinearLayout>
+
+                <!-- Check-out Date -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="#F8F8F8"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:layout_marginStart="4dp">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_calendar"
+                        android:layout_marginEnd="8dp"
+                        app:tint="#6200EE"/>
+
+                    <EditText
+                        android:id="@+id/checkOutDate"
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:background="@null"
+                        android:focusable="false"
+                        android:hint="Check-out"
+                        android:textColor="#212121"
+                        android:textColorHint="#9E9E9E" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Price Range -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="4dp">
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/priceRangeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0$ - 1000$"
+                    android:textColor="#757575"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="8dp"/>
+            </LinearLayout>
+
+            <SeekBar
+                android:id="@+id/priceSeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="1000"
+                android:progressTint="#6200EE"
+                android:thumbTint="#6200EE"
+                android:layout_marginBottom="10dp"/>
+
+
+
+            <!-- Rating Filter -->
+
+            <!-- Search Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tìm kiếm"
+                android:layout_marginTop="12dp"
+                android:padding="12dp"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#6200EE"
+                app:icon="@drawable/ic_search"
+                app:iconTint="#FFFFFF"
+                app:iconGravity="textStart"/>
+
+        </LinearLayout>
+
+        <!-- Sort Options -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="6dp"/>
+
+        <!-- Luxury Rooms Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Luxury Rooms"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/luxuryRoomsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:clipToPadding="false" />
+
+        <!-- Royal Rooms Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Royal Rooms"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            android:layout_marginBottom="8dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/royalRoomsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:clipToPadding="false"
+             />
+
+    </LinearLayout>
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:elevation="10dp"
+        android:background="@android:color/transparent"/>
+
+</FrameLayout>

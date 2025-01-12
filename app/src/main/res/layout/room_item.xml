@@ -1,83 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:padding="6dp"
-    android:layout_marginStart="4dp"
-    android:layout_marginEnd="4dp"
-    android:layout_width="160dp"
-    android:background="@drawable/room_item_border"
-    android:layout_height="182dp">
-    <ImageView
-        android:id="@+id/imageRoom"
-        android:layout_width="152dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="4dp"
-        android:scaleType="centerCrop"
-        android:contentDescription="@string/image_room_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-<!--        app:srcCompat="@drawable/room" />-->
+    android:layout_width="200dp"
+    android:layout_height="160dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp">
 
-    <TextView
-        android:id="@+id/saleTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/search_border"
-        android:backgroundTint="#e0effd"
-        android:padding="5dp"
-        android:text="@string/_10_off_text"
-        android:textColor="#007EF2"
-        android:textSize="11sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/imageRoom"
-        app:layout_constraintTop_toBottomOf="@+id/imageRoom" />
-    <TextView
-        android:id="@+id/ratingTV"
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/search_border"
-        android:backgroundTint="#e0effd"
-        android:padding="5dp"
-        android:text="@string/rating_5_text"
-        android:textColor="#007EF2"
-        android:textSize="11sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageRoom"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/saleTV"
-        app:layout_constraintTop_toBottomOf="@+id/imageRoom" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/nameRoomTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="@string/luxury_room_text"
-        android:textColor="#303030"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageRoom"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/saleTV"
-        app:layout_constraintTop_toBottomOf="@+id/saleTV" />
-    <TextView
-        android:id="@+id/priceTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
-        android:text="@string/_100_per_night_text"
-        android:textColor="#007EF2"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageRoom"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/imageRoom"
-        app:layout_constraintTop_toBottomOf="@+id/nameRoomTV" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imgRoom"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/tvTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="#FFD700"
+            android:padding="4dp"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imgRoom"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/tvRoomName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#212121"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="#6200EE"
+                    android:textStyle="bold"/>
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:progressTint="#FFD700"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
