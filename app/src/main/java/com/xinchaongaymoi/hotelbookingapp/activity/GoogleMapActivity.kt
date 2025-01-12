@@ -55,7 +55,7 @@ class GoogleMapActivity : AppCompatActivity() {
         circle = googleMap.addCircle(
             CircleOptions()
                 .center(item.latLng)
-                .radius(10.0)
+                .radius(100.0)
                 .fillColor(ContextCompat.getColor(this, R.color.colorPrimaryTranslucent))
                 .strokeColor(ContextCompat.getColor(this, R.color.colorPrimary))
         )
@@ -71,6 +71,11 @@ class GoogleMapActivity : AppCompatActivity() {
             R.id.map_fragment
         ) as? SupportMapFragment
         mapFragment?.getMapAsync { googleMap ->
+            val maxZoomLevel = 16f
+            googleMap.setMaxZoomPreference(maxZoomLevel)
+            places.forEach { place ->
+               addCircle(googleMap, place)
+            }
             // Ensure all places are visible in the map
             googleMap.setOnMapLoadedCallback {
                 val bounds = LatLngBounds.builder()
