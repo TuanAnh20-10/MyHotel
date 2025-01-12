@@ -20,7 +20,7 @@ class PlacesReader(private val context: Context) {
 
     // InputStream representing places.json
     private val inputStream: InputStream
-        get() = context.resources.openRawResource(R.raw.places)
+        get() = context.resources.openRawResource(R.raw.resort_places)
 
     /**
      * Reads the list of place JSON objects in the file places.json

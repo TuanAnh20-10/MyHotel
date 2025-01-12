@@ -55,7 +55,7 @@ class GoogleMapActivity : AppCompatActivity() {
         circle = googleMap.addCircle(
             CircleOptions()
                 .center(item.latLng)
-                .radius(1000.0)
+                .radius(10.0)
                 .fillColor(ContextCompat.getColor(this, R.color.colorPrimaryTranslucent))
                 .strokeColor(ContextCompat.getColor(this, R.color.colorPrimary))
         )
