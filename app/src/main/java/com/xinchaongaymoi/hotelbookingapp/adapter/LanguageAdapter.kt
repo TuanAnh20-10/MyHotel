@@ -26,8 +26,6 @@ class LanguageAdapter(
         override fun onBindViewHolder(holder: LanguageViewHolder, position: Int) {
             val language = languages[position]
             holder.textView.text = language
-
-
             holder.itemView.setOnClickListener {
                 onLanguageSelected(language)
             }

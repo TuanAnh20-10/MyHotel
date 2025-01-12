@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="8dp"
     android:layout_height="wrap_content"
-    android:layout_width="wrap_content">
+    android:layout_width="match_parent">
 
     <TextView
         android:id="@+id/language_title"
@@ -21,10 +21,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/language_recycler_view"
         android:layout_width="wrap_content"
+        android:overScrollMode="never"
         android:layout_margin="8dp"
         android:layout_height="wrap_content"
->
-
-    </androidx.recyclerview.widget.RecyclerView>
-
+/>
 </LinearLayout>
