@@ -20,7 +20,7 @@ class LanguageBottomSheet : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ) : View?
     {
-        val view = inflater.inflate(R.layout.language_bottom_sheet_content, container, false)
+        val view = inflater.inflate(R.layout.language_bottom_sheet_layout, container, false)
         return view
     }
     companion object {
