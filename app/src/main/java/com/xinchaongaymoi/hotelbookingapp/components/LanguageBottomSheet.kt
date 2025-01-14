@@ -29,11 +29,11 @@ class LanguageBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val languages = listOf("English", "Vietnamese")
+        val languages = listOf(getString(R.string.english), getString(R.string.vietnamese))
         val languageAdapter = LanguageAdapter(languages)
         { language ->
-            if (language == "English") setLocale("en")
-            else if (language == "Vietnamese")
+            if (language == getString(R.string.english)) setLocale("en")
+            else if (language == getString(R.string.vietnamese))
             setLocale("vi")
         }
         val languageRecyclerView = view.findViewById<RecyclerView>(R.id.language_recycler_view)
