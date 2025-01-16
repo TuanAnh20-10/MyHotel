@@ -60,7 +60,7 @@ class RoomService {
     ) {
         bookingsRef
             .orderByChild("status")
-            .equalTo("CONFIRMED")
+            .equalTo("pending")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val checkInDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(checkIn)
