@@ -86,11 +86,10 @@ class SearchFragment : Fragment() {
                 if (it > 0) it else null 
             }
 
-            if ((checkIn.isNotBlank() && checkOut.isBlank()) || 
-                (checkIn.isBlank() && checkOut.isNotBlank())) {
+            if ((checkIn.isBlank() && checkOut.isBlank()) ) {
                 return@setOnClickListener
             }
-
+            viewModel.setDates(checkIn, checkOut)
             viewModel.searchRooms(
                 location.ifBlank { null },
                 checkIn.ifBlank { null },

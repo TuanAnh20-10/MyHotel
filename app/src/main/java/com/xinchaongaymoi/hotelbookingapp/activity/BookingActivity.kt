@@ -10,6 +10,8 @@ import com.xinchaongaymoi.hotelbookingapp.service.BookingService
 import com.xinchaongaymoi.hotelbookingapp.service.RoomService
 import java.text.SimpleDateFormat
 import java.util.Locale
+import android.util.Log
+import com.bumptech.glide.Glide
 
 class BookingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBookingBinding
@@ -23,9 +25,11 @@ class BookingActivity : AppCompatActivity() {
         bookingService  = BookingService()
         roomService = RoomService()
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
-        val roomId = intent.getStringExtra("ROOM_ID") ?: return
+        val roomId = intent.getStringExtra("Room_ID") ?: return
+
         val checkIn = intent.getStringExtra("CHECK_IN") ?: return
         val checkOut = intent.getStringExtra("CHECK_OUT") ?: return
+
         roomService.getRoomById(roomId){
             room->
             if(room!=null){
@@ -40,11 +44,17 @@ class BookingActivity : AppCompatActivity() {
     private fun setRoomInfo(room: Room){
         binding.apply {
             tvRoomName.text = room.roomName
-            tvRoomType.text =room.roomType
+            tvRoomType.text = "Room type: ${room.roomType}"
             tvLocation.text = room.location
             ratingBar.rating = room.rating.toFloat()
             tvRating.text = String.format("%.1f", room.rating)
 
+            tvGuestCount.text = "${room.maxGuests} guests"
+            tvBedCount.text = "${room.totalBed} beds"
+
+            Glide.with(this@BookingActivity)
+                .load(room.mainImage)
+                .into(binding.ivRoomImage)
         }
     }
     private fun handleBooking(roomId: String, checkIn: String, checkOut: String) {
@@ -53,8 +63,7 @@ class BookingActivity : AppCompatActivity() {
             Toast.makeText(this, "Please login before booking", Toast.LENGTH_SHORT).show()
             return
         }
-
-        // Hiển thị dialog xác nhận
+        Log.i("UserId",userId)
         MaterialAlertDialogBuilder(this)
             .setTitle("Booking confirmation")
             .setMessage("Are you sure you want to book this room?")

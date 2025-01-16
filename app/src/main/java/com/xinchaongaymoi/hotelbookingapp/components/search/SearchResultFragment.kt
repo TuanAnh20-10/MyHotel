@@ -70,6 +70,17 @@ class SearchResultFragment : Fragment() {
         viewModel.searchResults.observe(viewLifecycleOwner) { rooms ->
             roomAdapter.updateRooms(rooms)
         }
+        viewModel.checkInDate.observe(viewLifecycleOwner) { checkIn ->
+            viewModel.checkOutDate.value?.let { checkOut ->
+                roomAdapter.setDates(checkIn, checkOut)
+            }
+        }
+
+        viewModel.checkOutDate.observe(viewLifecycleOwner) { checkOut ->
+            viewModel.checkInDate.value?.let { checkIn ->
+                roomAdapter.setDates(checkIn, checkOut)
+            }
+        }
         viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
             binding.progressBar.visibility = if (isLoading) {
                 View.VISIBLE
