@@ -22,7 +22,7 @@ class BookingActivity : AppCompatActivity() {
         setContentView(binding.root)
         bookingService  = BookingService()
         roomService = RoomService()
-        sharedPreferences = getSharedPreferences("User", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         val roomId = intent.getStringExtra("ROOM_ID") ?: return
         val checkIn = intent.getStringExtra("CHECK_IN") ?: return
         val checkOut = intent.getStringExtra("CHECK_OUT") ?: return
@@ -42,11 +42,13 @@ class BookingActivity : AppCompatActivity() {
             tvRoomName.text = room.roomName
             tvRoomType.text =room.roomType
             tvLocation.text = room.location
+            ratingBar.rating = room.rating.toFloat()
+            tvRating.text = String.format("%.1f", room.rating)
 
         }
     }
     private fun handleBooking(roomId: String, checkIn: String, checkOut: String) {
-        val userId = sharedPreferences.getString("USER_ID", null)
+        val userId = sharedPreferences.getString("id", null)
         if (userId == null) {
             Toast.makeText(this, "Please login before booking", Toast.LENGTH_SHORT).show()
             return
@@ -79,14 +81,20 @@ class BookingActivity : AppCompatActivity() {
     }
     private fun setBookingDetails(room: Room,checkIn:String,checkOut:String){
         binding.apply {
-            tvCheckIn.text = "Checkin: ${checkIn}"
-            tvCheckOut.text = "Checkout: ${checkOut}"
+            tvCheckIn.text = "Check In: ${checkIn}"
+            tvCheckOut.text = "Check Out: ${checkOut}"
             val nights = calculateNights(checkIn, checkOut)
-            tvNights.text = "Số đêm: $nights đêm"
-            tvPricePerNight.text = "${room.pricePerNight}$"
-            tvNumberOfNights.text = "$nights đêm"
-            val totalPrice = room.pricePerNight * nights
-            tvTotalPrice.text = "${totalPrice}$"
+            tvNights.text = "Nights: $nights "
+            val pricePerNight = if (room.sale > 0) {
+              room.sale
+            } else {
+                room.pricePerNight
+            }
+
+            tvPricePerNight.text = "${String.format("%.2f", pricePerNight)}$"
+            tvNumberOfNights.text = "$nights night"
+            val totalPrice = pricePerNight * nights
+            tvTotalPrice.text = "${String.format("%.2f", totalPrice)}$"
         }
     }
     private fun calculateNights(checkIn: String, checkOut: String): Long {

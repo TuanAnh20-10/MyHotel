@@ -36,7 +36,6 @@ class LoginActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         enableEdgeToEdge()
         setContentView(binding.root)
-        Log.e("id",getString(R.string.default_web_client_id) )
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))  // Ensure this is correct
             .requestEmail()
@@ -93,14 +92,13 @@ class LoginActivity : AppCompatActivity() {
     private fun handleResult(task:Task<GoogleSignInAccount>)
     {
         if(task.isSuccessful){
-            Log.i("thanhcong","thanhcong")
             val account :GoogleSignInAccount?=task.result
             if(account!=null){
                 updateUI(account)
             }
         }
         else{
-            Log.i("thatbai","thatbai")
+
 
             Toast.makeText(this,task.exception.toString(),Toast.LENGTH_SHORT).show()
 

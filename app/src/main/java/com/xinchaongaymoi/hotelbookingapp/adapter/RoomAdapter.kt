@@ -9,7 +9,9 @@ import com.xinchaongaymoi.hotelbookingapp.databinding.RoomItemSearchBinding
 class RoomAdapter : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
     private var roomList = mutableListOf<Room>()
     var onItemClick: ((Room) -> Unit)? = null
-
+    fun setOnItemClickListener(listener: (Room) -> Unit) {
+        onItemClick = listener
+    }
     inner class RoomViewHolder(private val binding: RoomItemSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
 //        init {
@@ -32,6 +34,7 @@ class RoomAdapter : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
                 binding.btnBookNow.setOnClickListener{
                     onItemClick?.invoke(room)
                 }
+
             }
 
         }

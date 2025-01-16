@@ -69,10 +69,12 @@ class SearchFragment : Fragment() {
                 binding.priceRangeText.text = "0$ - ${progress}$"
             }
 
+
             override fun onStartTrackingTouch(seekBar: SeekBar?) {}
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
+
     }
 
     private fun setUpSearchBtn() {
