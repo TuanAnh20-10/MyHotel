@@ -14,6 +14,8 @@ import com.google.android.material.tabs.TabLayout
 import com.xinchaongaymoi.hotelbookingapp.adapter.RoomAdapter
 import com.xinchaongaymoi.hotelbookingapp.databinding.FragmentSearchResultBinding
 import com.xinchaongaymoi.hotelbookingapp.R
+import androidx.navigation.fragment.findNavController
+
 class SearchResultFragment : Fragment() {
 
     private val viewModel :SearchViewModel by activityViewModels()
@@ -59,12 +61,23 @@ class SearchResultFragment : Fragment() {
     }
     private fun setupRecyclerView()
     {
-        roomAdapter = RoomAdapter()
-        binding.recyclerViewRooms.apply {
-            adapter=roomAdapter
-            layoutManager =LinearLayoutManager(context)
-
+        roomAdapter = RoomAdapter().apply {
+            setOnItemClickListener { room ->
+                navigateToRoomDetail(room.id)
+            }
         }
+        binding.recyclerViewRooms.apply {
+            adapter = roomAdapter
+            layoutManager = LinearLayoutManager(context)
+        }
+    }
+    private fun navigateToRoomDetail(roomId: String) {
+        findNavController().navigate(
+            R.id.action_searchResultFragment_to_roomDetailFragment,
+            Bundle().apply {
+                putString("ROOM_ID", roomId)
+            }
+        )
     }
     private fun observeViewModel(){
         viewModel.searchResults.observe(viewLifecycleOwner) { rooms ->

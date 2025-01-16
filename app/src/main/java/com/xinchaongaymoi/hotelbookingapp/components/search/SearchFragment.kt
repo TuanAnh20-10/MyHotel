@@ -127,7 +127,24 @@ class SearchFragment : Fragment() {
             adapter = royalRoomAdapter
         }
 
-        // Thêm click listeners nếu cần
+        // Thêm click listeners
+        luxuryRoomAdapter.setOnItemClickListener { room ->
+            navigateToRoomDetail(room.id)
+        }
+
+        royalRoomAdapter.setOnItemClickListener { room ->
+            navigateToRoomDetail(room.id)
+        }
+    }
+
+    private fun navigateToRoomDetail(roomId: String) {
+        // Sử dụng Navigation Component để chuyển fragment
+        findNavController().navigate(
+            R.id.action_searchFragment_to_roomDetailFragment,
+            Bundle().apply {
+                putString("ROOM_ID", roomId)
+            }
+        )
     }
 
     private fun observeRoomData() {
