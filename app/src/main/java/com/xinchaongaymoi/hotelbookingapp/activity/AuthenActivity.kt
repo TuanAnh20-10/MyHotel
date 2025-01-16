@@ -13,17 +13,17 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.xinchaongaymoi.hotelbookingapp.R
-import com.xinchaongaymoi.hotelbookingapp.databinding.ActivityAuthenBinding
+import com.xinchaongaymoi.hotelbookingapp.databinding.ActivityRegisterBinding
 import com.google.firebase.database.*
 import com.xinchaongaymoi.hotelbookingapp.model.UserInfo
 
 class AuthenActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityAuthenBinding
+    private lateinit var binding:ActivityRegisterBinding
     private lateinit var firebaseAuth:FirebaseAuth
     private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
-        binding = ActivityAuthenBinding.inflate(layoutInflater)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(binding.root)
