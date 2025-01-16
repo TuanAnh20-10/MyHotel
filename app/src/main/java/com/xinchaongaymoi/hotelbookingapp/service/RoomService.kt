@@ -16,7 +16,7 @@ class RoomService {
     private val roomsRef = database.child("rooms")
     private val bookingsRef = database.child("Booking")
     fun searchRooms(
-        location: String?,
+        guestCount: Int,
         checkIn: String?,
         checkOut: String?,
         maxPrice: Double?,
@@ -28,12 +28,11 @@ class RoomService {
                 val allRooms = mutableListOf<Room>()
                 for (data in snapshot.children) {
                     val room = data.getValue(Room::class.java)
-                    room?.let { 
-                        val locationMatch = location.isNullOrBlank() ||
-                                          room.location.equals(location, ignoreCase = true)
+                    room?.let {
+                        val guestCountMatch = room.maxGuests == guestCount
                         val priceMatch = maxPrice == null || room.pricePerNight <= maxPrice
 
-                        if (locationMatch && priceMatch) {
+                        if (guestCountMatch && priceMatch) {
                             allRooms.add(it)
                         }
                     }
@@ -47,7 +46,7 @@ class RoomService {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("RoomService", "Error fetching rooms", error.toException())
+
                 callback(emptyList())
             }
         })
@@ -60,7 +59,7 @@ class RoomService {
     ) {
         bookingsRef
             .orderByChild("status")
-            .equalTo("pending")
+            .equalTo("confirmed")
             .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val checkInDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(checkIn)

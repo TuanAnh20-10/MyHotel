@@ -20,7 +20,7 @@ import com.xinchaongaymoi.hotelbookingapp.adapter.SearchRoomAdapter
 class SearchFragment : Fragment() {
     private val viewModel: SearchViewModel by activityViewModels()
     private lateinit var binding: FragmentSearchBinding
-
+    private var guestCount = 1
     // Khởi tạo adapters
     private val luxuryRoomAdapter = SearchRoomAdapter(SearchRoomAdapter.TYPE_LUXURY)
     private val royalRoomAdapter = SearchRoomAdapter(SearchRoomAdapter.TYPE_ROYAL)
@@ -40,6 +40,7 @@ class SearchFragment : Fragment() {
         setupPriceSeekBar()
         setUpSearchBtn()
         setupRecyclerViews()
+        setupGuestCounter()
         viewModel.loadRoomsByType()
         observeRoomData()
     }
@@ -79,7 +80,7 @@ class SearchFragment : Fragment() {
 
     private fun setUpSearchBtn() {
         binding.btnSearch.setOnClickListener {
-            val location = binding.locationInput.text.toString().trim()
+
             val checkIn = binding.checkInDate.text.toString().trim()
             val checkOut = binding.checkOutDate.text.toString().trim()
             val maxPrice = binding.priceSeekBar.progress.toDouble().let { 
@@ -91,7 +92,7 @@ class SearchFragment : Fragment() {
             }
             viewModel.setDates(checkIn, checkOut)
             viewModel.searchRooms(
-                location.ifBlank { null },
+                guestCount,
                 checkIn.ifBlank { null },
                 checkOut.ifBlank { null },
                 maxPrice
@@ -99,7 +100,22 @@ class SearchFragment : Fragment() {
             findNavController().navigate(R.id.action_searchFragment_to_searchResultFragment)
         }
     }
+    private fun setupGuestCounter() {
+        binding.guestCountText.text = guestCount.toString()
 
+        binding.decreaseGuests.setOnClickListener {
+            if (guestCount > 1) {
+                guestCount--
+                binding.guestCountText.text = guestCount.toString()
+            }
+        }
+        binding.increaseGuests.setOnClickListener {
+            if (guestCount < 10) {
+                guestCount++
+                binding.guestCountText.text = guestCount.toString()
+            }
+        }
+    }
     private fun setupRecyclerViews() {
         binding.luxuryRoomsRecyclerView.apply {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

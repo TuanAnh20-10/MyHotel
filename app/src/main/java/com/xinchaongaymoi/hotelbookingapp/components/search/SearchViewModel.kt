@@ -37,9 +37,9 @@ class SearchViewModel : ViewModel() {
         _checkInDate.value = checkIn
         _checkOutDate.value = checkOut
     }
-    fun searchRooms(location: String?, checkIn: String?, checkOut: String?, maxPrice: Double?) {
+    fun searchRooms(guestCount: Int, checkIn: String?, checkOut: String?, maxPrice: Double?) {
         _isLoading.value = true
-        roomService.searchRooms(location, checkIn, checkOut, maxPrice) { rooms ->
+        roomService.searchRooms(guestCount, checkIn, checkOut, maxPrice) { rooms ->
             _searchResults.postValue(rooms)
             _isLoading.value = false
         }
