@@ -111,9 +111,31 @@ class RoomService {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    Log.e("RoomService", "Lỗi khi lấy danh sách phòng theo loại", error.toException())
+                    Log.e("RoomService", "Error found room", error.toException())
                     callback(emptyList())
                 }
             })
+    }
+    fun getRoomById(roomId:String,callback: (Room?) -> Unit){
+        roomsRef.child(roomId).addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    try {
+                        val room = snapshot.getValue(Room::class.java)?.copy(id = snapshot.key ?: "")
+                        callback(room)
+                    } catch (e: Exception) {
+                        callback(null)
+                    }
+                } else {
+
+                    callback(null)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                callback(null)
+            }
+
+        })
     }
 }

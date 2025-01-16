@@ -12,11 +12,11 @@ class RoomAdapter : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
 
     inner class RoomViewHolder(private val binding: RoomItemSearchBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        init {
-            binding.btnBookNow.setOnClickListener {
-
-            }
-        }
+//        init {
+//            binding.btnBookNow.setOnClickListener {
+//                onItemClick?.invoke(room)
+//            }
+//        }
 
         fun bind(room: Room) {
             binding.apply {
@@ -29,6 +29,9 @@ class RoomAdapter : RecyclerView.Adapter<RoomAdapter.RoomViewHolder>() {
                 Glide.with(roomImage.context)
                     .load(room.mainImage)
                     .into(roomImage)
+                binding.btnBookNow.setOnClickListener{
+                    onItemClick?.invoke(room)
+                }
             }
 
         }
