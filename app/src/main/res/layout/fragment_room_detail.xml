@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
@@ -31,14 +32,28 @@
                 android:id="@+id/tvRoomName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
                 android:text="Room name"
-                android:textSize="32sp"
+                android:textSize="28sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
                 app:layout_constraintTop_toBottomOf="@id/viewPagerImages"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Rating Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnViewReviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Xem đánh giá"
+                android:textSize="14sp"
+                app:icon="@android:drawable/ic_menu_recent_history"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:layout_constraintTop_toTopOf="@id/tvRoomName"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <!-- CardView for Details -->
@@ -46,8 +61,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="8dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
                 app:layout_constraintTop_toBottomOf="@id/tvRoomName"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
@@ -56,23 +71,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="20dp">
 
                     <!-- Individual Room Details -->
                     <TextView
                         android:id="@+id/tvRoomDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="8dp"
-                        android:text="Room details:"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                        android:paddingBottom="12dp"
+                        android:text="Thông tin phòng:"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black" />
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@android:color/darker_gray" />
+                        android:layout_marginBottom="16dp"
+                        android:background="#E0E0E0" />
 
                     <TextView
                         android:id="@+id/tvArea"
@@ -120,7 +136,9 @@
                         android:layout_height="wrap_content"
                         android:paddingBottom="8dp"
                         android:text="Price per Night: N/A"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary" />
 
                     <TextView
                         android:id="@+id/tvUtilities"
@@ -136,16 +154,16 @@
     </ScrollView>
 
     <!-- Book Now Button -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnBookNow"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_gravity="bottom"
         android:layout_margin="16dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="Book Now"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:text="Đặt phòng ngay"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp"
+        app:elevation="8dp" />
 
 </FrameLayout> 
