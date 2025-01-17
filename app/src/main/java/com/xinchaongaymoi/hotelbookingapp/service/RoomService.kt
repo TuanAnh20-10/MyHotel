@@ -57,10 +57,7 @@ class RoomService {
         checkOut: String,
         callback: (List<Room>) -> Unit
     ) {
-        bookingsRef
-            .orderByChild("status")
-            .equalTo("confirmed")
-            .addListenerForSingleValueEvent(object : ValueEventListener {
+        bookingsRef.addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val checkInDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(checkIn)
                     val checkOutDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(checkOut)
@@ -69,14 +66,17 @@ class RoomService {
                     for (bookingSnapshot in snapshot.children) {
                         val booking = bookingSnapshot.getValue(Booking::class.java)
                         booking?.let {
-                            val bookingCheckIn = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                                .parse(it.checkInDate)
-                            val bookingCheckOut = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                                .parse(it.checkOutDate)
+                            if(it.status=="pending"||it.status=="confirmed")
+                            {
+                                val bookingCheckIn = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                                    .parse(it.checkInDate)
+                                val bookingCheckOut = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                                    .parse(it.checkOutDate)
 
-                            if (!(checkOutDate?.before(bookingCheckIn) == true ||
-                                checkInDate?.after(bookingCheckOut) == true)) {
-                                bookedRoomIds.add(it.roomId)
+                                if (!(checkOutDate?.before(bookingCheckIn) == true ||
+                                            checkInDate?.after(bookingCheckOut) == true)) {
+                                    bookedRoomIds.add(it.roomId)
+                                }
                             }
                         }
                     }

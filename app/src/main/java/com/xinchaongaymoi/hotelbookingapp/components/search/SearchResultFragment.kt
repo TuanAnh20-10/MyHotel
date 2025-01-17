@@ -1,5 +1,7 @@
 package com.xinchaongaymoi.hotelbookingapp.components.search
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -15,7 +17,7 @@ import com.xinchaongaymoi.hotelbookingapp.adapter.RoomAdapter
 import com.xinchaongaymoi.hotelbookingapp.databinding.FragmentSearchResultBinding
 import com.xinchaongaymoi.hotelbookingapp.R
 class SearchResultFragment : Fragment() {
-
+    private var BOOKING_REQUEST_CODE = 100
     private val viewModel :SearchViewModel by activityViewModels()
     private lateinit var binding:FragmentSearchResultBinding
     private lateinit var roomAdapter:RoomAdapter
@@ -69,6 +71,8 @@ class SearchResultFragment : Fragment() {
     private fun observeViewModel(){
         viewModel.searchResults.observe(viewLifecycleOwner) { rooms ->
             roomAdapter.updateRooms(rooms)
+            binding.tvNoRooms.visibility = if (rooms.isEmpty()) View.VISIBLE else View.GONE
+            binding.recyclerViewRooms.visibility = if (rooms.isEmpty()) View.GONE else View.VISIBLE
         }
         viewModel.checkInDate.observe(viewLifecycleOwner) { checkIn ->
             viewModel.checkOutDate.value?.let { checkOut ->
@@ -86,6 +90,16 @@ class SearchResultFragment : Fragment() {
                 View.VISIBLE
             } else {
                 View.GONE
+            }
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == BOOKING_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            viewModel.checkInDate.value?.let { checkIn ->
+                viewModel.checkOutDate.value?.let { checkOut ->
+                    viewModel.searchRooms(1, checkIn, checkOut, null)
+                }
             }
         }
     }

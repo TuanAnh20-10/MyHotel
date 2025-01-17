@@ -12,6 +12,9 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 import android.util.Log
 import com.bumptech.glide.Glide
+import android.content.Intent
+import android.os.Build
+import android.view.View
 
 class BookingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityBookingBinding
@@ -63,29 +66,44 @@ class BookingActivity : AppCompatActivity() {
             Toast.makeText(this, "Please login before booking", Toast.LENGTH_SHORT).show()
             return
         }
-        Log.i("UserId",userId)
+        
         MaterialAlertDialogBuilder(this)
-            .setTitle("Booking confirmation")
+            .setTitle("Confirm booking")
             .setMessage("Are you sure you want to book this room?")
-            .setPositiveButton("Cofirm") { _, _ ->
-                val totalPrice = binding.tvTotalPrice.text.toString().replace("$", "").toDouble()
-
+            .setNegativeButton("Cancel") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setPositiveButton("Confirm") { _, _ ->
+                // Hiển thị loading
+                binding.progressBar.visibility = View.VISIBLE
+                binding.btnConfirmBooking.isEnabled = false
+                
+                // Lấy tổng tiền từ TextView
+                val totalPriceText = binding.tvTotalPrice.text.toString()
+                val totalPrice = totalPriceText.replace("[^0-9.]".toRegex(), "").toDoubleOrNull() ?: 0.0
+                
                 bookingService.createBooking(
                     roomId = roomId,
                     userId = userId,
                     checkInDate = checkIn,
                     checkOutDate = checkOut,
                     totalPrice = totalPrice
-                ) { success, message ->
-                    if (success) {
-                        Toast.makeText(this, "Booking succesfully!", Toast.LENGTH_SHORT).show()
-                        finish()
-                    } else {
-                        Toast.makeText(this, "Error: $message", Toast.LENGTH_SHORT).show()
+                ) { success, bookingId ->
+                    runOnUiThread {
+                        binding.progressBar.visibility = View.GONE
+                        binding.btnConfirmBooking.isEnabled = true
+                        
+                        if (success) {
+                            Toast.makeText(this, "Booking successfully!", Toast.LENGTH_LONG).show()
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            Toast.makeText(this, "Error: ${bookingId ?: "Unknown error"}", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             }
-            .setNegativeButton("Cancel", null)
             .show()
     }
     private fun setBookingDetails(room: Room,checkIn:String,checkOut:String){

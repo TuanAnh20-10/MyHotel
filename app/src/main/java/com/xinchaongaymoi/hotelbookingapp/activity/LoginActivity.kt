@@ -124,7 +124,7 @@ class LoginActivity : AppCompatActivity() {
                 if (snapshot.exists()) {
                     val name = snapshot.child("name").getValue(String::class.java) ?: "Unknown"
                     val email = snapshot.child("email").getValue(String::class.java) ?: "Unknown"
-                    val phone = snapshot.child("phoneNumber").getValue(String::class.java) ?: "Unknown"
+                    val phone = snapshot.child("phone").getValue(String::class.java) ?: "Unknown"
                     // Save user info in SharedPreferences
                     sharedPreferences.edit().apply {
                         putString("id",userId)

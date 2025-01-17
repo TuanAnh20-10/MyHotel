@@ -86,7 +86,6 @@ class SearchFragment : Fragment() {
             val maxPrice = binding.priceSeekBar.progress.toDouble().let { 
                 if (it > 0) it else null 
             }
-
             if ((checkIn.isBlank() && checkOut.isBlank()) ) {
                 return@setOnClickListener
             }
