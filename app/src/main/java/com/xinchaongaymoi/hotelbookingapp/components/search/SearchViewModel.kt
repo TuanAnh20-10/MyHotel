@@ -9,11 +9,6 @@ import com.xinchaongaymoi.hotelbookingapp.service.RoomService
 import android.util.Log
 class SearchViewModel : ViewModel() {
     private val roomService = RoomService()
-    private val _checkInDate = MutableLiveData<String>()
-    val checkInDate: LiveData<String> = _checkInDate
-
-    private val _checkOutDate = MutableLiveData<String>()
-    val checkOutDate: LiveData<String> = _checkOutDate
     
     private val _searchResults = MutableLiveData<List<Room>>()
     val searchResults: LiveData<List<Room>> = _searchResults
@@ -33,13 +28,10 @@ class SearchViewModel : ViewModel() {
         PRICE_HIGH_TO_LOW,
         RATING_HIGH_TO_LOW
     }
-    fun setDates(checkIn: String, checkOut: String) {
-        _checkInDate.value = checkIn
-        _checkOutDate.value = checkOut
-    }
-    fun searchRooms(guestCount: Int, checkIn: String?, checkOut: String?, maxPrice: Double?) {
+
+    fun searchRooms(location: String?, checkIn: String?, checkOut: String?, maxPrice: Double?) {
         _isLoading.value = true
-        roomService.searchRooms(guestCount, checkIn, checkOut, maxPrice) { rooms ->
+        roomService.searchRooms(location, checkIn, checkOut, maxPrice) { rooms ->
             _searchResults.postValue(rooms)
             _isLoading.value = false
         }

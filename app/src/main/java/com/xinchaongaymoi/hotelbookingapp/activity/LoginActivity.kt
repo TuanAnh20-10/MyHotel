@@ -19,23 +19,24 @@ import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.ValueEventListener
 import com.xinchaongaymoi.hotelbookingapp.R
-import com.xinchaongaymoi.hotelbookingapp.databinding.ActivityLoginBinding
+import com.xinchaongaymoi.hotelbookingapp.databinding.ActivityLogin2Binding
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.database.*
 class LoginActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityLoginBinding
+    private lateinit var binding:ActivityLogin2Binding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var googleSignInClient:GoogleSignInClient
     private lateinit var sharedPreferences: SharedPreferences
     private lateinit var database:DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityLoginBinding.inflate(layoutInflater)
+        binding=ActivityLogin2Binding.inflate(layoutInflater)
         firebaseAuth=FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().reference
         sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
         enableEdgeToEdge()
         setContentView(binding.root)
+        Log.e("id",getString(R.string.default_web_client_id) )
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))  // Ensure this is correct
             .requestEmail()
@@ -92,6 +93,7 @@ class LoginActivity : AppCompatActivity() {
     private fun handleResult(task:Task<GoogleSignInAccount>)
     {
         if(task.isSuccessful){
+            Log.i("thanhcong","thanhcong")
             val account :GoogleSignInAccount?=task.result
             if(account!=null){
                 sharedPreferences.edit().apply {
@@ -106,7 +108,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
         else{
-
+            Log.i("thatbai","thatbai")
 
             Toast.makeText(this,task.exception.toString(),Toast.LENGTH_SHORT).show()
 
@@ -132,7 +134,7 @@ class LoginActivity : AppCompatActivity() {
                 if (snapshot.exists()) {
                     val name = snapshot.child("name").getValue(String::class.java) ?: "Unknown"
                     val email = snapshot.child("email").getValue(String::class.java) ?: "Unknown"
-                    val phone = snapshot.child("phone").getValue(String::class.java) ?: "Unknown"
+                    val phone = snapshot.child("phoneNumber").getValue(String::class.java) ?: "Unknown"
                     // Save user info in SharedPreferences
                     sharedPreferences.edit().apply {
                         putString("id",userId)

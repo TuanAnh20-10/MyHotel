@@ -20,14 +20,8 @@
     <fragment
         android:id="@+id/navigation_search"
         android:name="com.xinchaongaymoi.hotelbookingapp.components.search.SearchFragment"
-        android:label="@string/menu_search"
+        android:label="@string/menu_cart"
         tools:layout="@layout/fragment_search">
-        <action
-            android:id="@+id/action_searchFragment_to_roomDetailFragment"
-            app:destination="@id/navigation_room_detail"
-            app:popUpTo="@id/navigation_search"
-            app:popUpToInclusive="false"/>
-        
         <action
             android:id="@+id/action_searchFragment_to_searchResultFragment"
             app:destination="@id/navigation_search_result" />
@@ -36,25 +30,8 @@
     <fragment
         android:id="@+id/navigation_search_result"
         android:name="com.xinchaongaymoi.hotelbookingapp.components.search.SearchResultFragment"
-        android:label="Search Results"
-        tools:layout="@layout/fragment_search_result">
-        
-        <action
-            android:id="@+id/action_searchResultFragment_to_roomDetailFragment"
-            app:destination="@id/navigation_room_detail"
-            app:popUpTo="@id/navigation_search_result"
-            app:popUpToInclusive="false"/>
-    </fragment>
-
-    <fragment
-        android:id="@+id/navigation_room_detail"
-        android:name="com.xinchaongaymoi.hotelbookingapp.components.search.RoomDetailFragment"
-        android:label="Room Detail"
-        tools:layout="@layout/fragment_room_detail">
-        <argument
-            android:name="ROOM_ID"
-            app:argType="string" />
-    </fragment>
+        android:label="Search"
+        tools:layout="@layout/fragment_search_result" />
 
     <fragment
         android:id="@+id/navigation_account"

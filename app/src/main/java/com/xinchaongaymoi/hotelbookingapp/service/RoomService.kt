@@ -16,7 +16,7 @@ class RoomService {
     private val roomsRef = database.child("rooms")
     private val bookingsRef = database.child("Booking")
     fun searchRooms(
-        guestCount: Int,
+        location: String?,
         checkIn: String?,
         checkOut: String?,
         maxPrice: Double?,
@@ -28,11 +28,12 @@ class RoomService {
                 val allRooms = mutableListOf<Room>()
                 for (data in snapshot.children) {
                     val room = data.getValue(Room::class.java)
-                    room?.let {
-                        val guestCountMatch = room.maxGuests == guestCount
+                    room?.let { 
+                        val locationMatch = location.isNullOrBlank() ||
+                                          room.location.equals(location, ignoreCase = true)
                         val priceMatch = maxPrice == null || room.pricePerNight <= maxPrice
 
-                        if (guestCountMatch && priceMatch) {
+                        if (locationMatch && priceMatch) {
                             allRooms.add(it)
                         }
                     }
@@ -46,7 +47,7 @@ class RoomService {
             }
 
             override fun onCancelled(error: DatabaseError) {
-
+                Log.e("RoomService", "Error fetching rooms", error.toException())
                 callback(emptyList())
             }
         })
@@ -57,7 +58,10 @@ class RoomService {
         checkOut: String,
         callback: (List<Room>) -> Unit
     ) {
-        bookingsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        bookingsRef
+            .orderByChild("status")
+            .equalTo("CONFIRMED")
+            .addListenerForSingleValueEvent(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val checkInDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(checkIn)
                     val checkOutDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(checkOut)
@@ -66,17 +70,14 @@ class RoomService {
                     for (bookingSnapshot in snapshot.children) {
                         val booking = bookingSnapshot.getValue(Booking::class.java)
                         booking?.let {
-                            if(it.status=="pending"||it.status=="confirmed")
-                            {
-                                val bookingCheckIn = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                                    .parse(it.checkInDate)
-                                val bookingCheckOut = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                                    .parse(it.checkOutDate)
+                            val bookingCheckIn = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                                .parse(it.checkInDate)
+                            val bookingCheckOut = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                                .parse(it.checkOutDate)
 
-                                if (!(checkOutDate?.before(bookingCheckIn) == true ||
-                                            checkInDate?.after(bookingCheckOut) == true)) {
-                                    bookedRoomIds.add(it.roomId)
-                                }
+                            if (!(checkOutDate?.before(bookingCheckIn) == true ||
+                                checkInDate?.after(bookingCheckOut) == true)) {
+                                bookedRoomIds.add(it.roomId)
                             }
                         }
                     }
@@ -110,31 +111,9 @@ class RoomService {
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    Log.e("RoomService", "Error found room", error.toException())
+                    Log.e("RoomService", "Lỗi khi lấy danh sách phòng theo loại", error.toException())
                     callback(emptyList())
                 }
             })
-    }
-    fun getRoomById(roomId:String,callback: (Room?) -> Unit){
-        roomsRef.child(roomId).addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    try {
-                        val room = snapshot.getValue(Room::class.java)?.copy(id = snapshot.key ?: "")
-                        callback(room)
-                    } catch (e: Exception) {
-                        callback(null)
-                    }
-                } else {
-
-                    callback(null)
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                callback(null)
-            }
-
-        })
     }
 }
